@@ -19,47 +19,37 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onOpenDetailedExplanation,
 }) => {
   return (
-    <>
-      {/* Hero Narrative Area */}
-      <HeroSection location={location} />
+    <div className="dashboard-grid-layout">
+      {/* Primary Column: Hero, Center Intelligence, Trajectory */}
+      <div className="dashboard-main-col">
+        <HeroSection location={location} />
 
-      {/* Central Complementary Intelligence Strip */}
-      <div
-        className="desktop-center-intelligence"
-        style={{
-          position: 'absolute',
-          left: 'calc(126 * var(--u))',
-          right: 'calc(370 * var(--u))',
-          top: 'calc(326 * var(--u))',
-          display: 'grid',
-          gridTemplateColumns: '1.25fr 1fr',
-          gap: 'calc(14 * var(--u))',
-          zIndex: 32,
-        }}
-      >
-        <TrustExplanationPanel
-          explanations={location.trustExplanations}
-          onOpenDetailedExplanation={onOpenDetailedExplanation}
-        />
-        <ModelDisagreementPanel
-          models={location.models}
-          blendedForecast={location.blendedForecast}
-          disagreementLevel={location.uncertainty.disagreementLevel}
+        <div className="dashboard-center-intelligence">
+          <TrustExplanationPanel
+            explanations={location.trustExplanations}
+            onOpenDetailedExplanation={onOpenDetailedExplanation}
+          />
+          <ModelDisagreementPanel
+            models={location.models}
+            blendedForecast={location.blendedForecast}
+            disagreementLevel={location.uncertainty.disagreementLevel}
+          />
+        </div>
+
+        <ForecastTrajectory
+          trajectory={location.trajectory}
+          selectedLeadTime={location.leadTime}
+          onSelectLeadTime={onSelectLeadTime}
         />
       </div>
 
-      {/* Main Forecast Trajectory Strip (Bottom) */}
-      <ForecastTrajectory
-        trajectory={location.trajectory}
-        selectedLeadTime={location.leadTime}
-        onSelectLeadTime={onSelectLeadTime}
-      />
-
-      {/* Right Operational Rail */}
-      <RightRail
-        location={location}
-        onNavigateTrust={() => onNavigateTab('trust')}
-      />
-    </>
+      {/* Operational Side Column: Right Rail */}
+      <div className="dashboard-side-col">
+        <RightRail
+          location={location}
+          onNavigateTrust={() => onNavigateTab('trust')}
+        />
+      </div>
+    </div>
   );
 };

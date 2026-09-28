@@ -73,18 +73,10 @@ export const ForecastTrajectory: React.FC<ForecastTrajectoryProps> = ({
 
   return (
     <section
-      className="desktop-bottom-strip animate-bottom-strip aurora-card-glass aurora-sheen"
+      className="dashboard-trajectory animate-bottom-strip aurora-card-glass aurora-sheen"
       style={{
-        position: 'absolute',
-        left: 'calc(126 * var(--u))',
-        right: 'calc(370 * var(--u))',
-        bottom: 'calc(24 * var(--u))',
-        height: 'calc(255 * var(--u))',
         padding: 'calc(16 * var(--u)) calc(22 * var(--u)) calc(12 * var(--u)) calc(22 * var(--u))',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        zIndex: 35,
+        zIndex: 10,
       }}
       aria-label="Forecast Trajectory and Blended Timeline"
     >

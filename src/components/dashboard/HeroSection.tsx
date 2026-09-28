@@ -8,13 +8,8 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
   return (
     <div
-      className="desktop-hero"
+      className="desktop-hero dashboard-hero"
       style={{
-        position: 'absolute',
-        left: 'calc(126 * var(--u))',
-        top: 'calc(136 * var(--u))',
-        maxWidth: 'calc(560 * var(--u))',
-        zIndex: 30,
         pointerEvents: 'auto',
       }}
     >
@@ -25,9 +20,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
           display: 'inline-flex',
           alignItems: 'center',
           gap: 'calc(6 * var(--u))',
-          padding: 'calc(5 * var(--u)) calc(12 * var(--u))',
+          padding: 'calc(4 * var(--u)) calc(12 * var(--u))',
           borderRadius: 'calc(20 * var(--u))',
-          marginBottom: 'calc(18 * var(--u))',
+          marginBottom: 'calc(8 * var(--u))',
+          alignSelf: 'flex-start',
         }}
       >
         <span
@@ -40,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
         />
         <span
           style={{
-            fontSize: 'calc(12 * var(--u))',
+            fontSize: 'calc(11 * var(--u))',
             fontWeight: 500,
             color: 'rgba(255, 255, 255, 0.92)',
             letterSpacing: 'calc(0.3 * var(--u))',
@@ -55,12 +51,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
       <h1
         className="animate-hero-h1 font-headline"
         style={{
-          fontSize: 'calc(52 * var(--u))',
-          lineHeight: 'calc(54 * var(--u))',
+          fontSize: 'clamp(28px, calc(38 * var(--u)), 48px)',
+          lineHeight: '1.08',
           fontWeight: 700,
           color: '#ffffff',
-          letterSpacing: 'calc(-1.2 * var(--u))',
-          marginBottom: 'calc(18 * var(--u))',
+          letterSpacing: 'calc(-1 * var(--u))',
+          marginBottom: 'calc(8 * var(--u))',
         }}
       >
         <div>Predictive</div>
@@ -71,13 +67,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
       <p
         className="animate-hero-p"
         style={{
-          width: 'calc(480 * var(--u))',
-          fontSize: 'calc(15.2 * var(--u))',
-          lineHeight: 'calc(24 * var(--u))',
+          maxWidth: 'calc(500 * var(--u))',
+          width: '100%',
+          fontSize: 'clamp(12px, calc(13.5 * var(--u)), 15px)',
+          lineHeight: '1.4',
           fontWeight: 500,
-          letterSpacing: 'calc(-0.3 * var(--u))',
-          color: 'rgba(255, 255, 255, 0.95)',
-          marginBottom: 'calc(26 * var(--u))',
+          letterSpacing: 'calc(-0.2 * var(--u))',
+          color: 'rgba(255, 255, 255, 0.92)',
+          marginBottom: 'calc(12 * var(--u))',
         }}
       >
         Adaptive multi-model forecasting powered by predictive model reliability, dynamic spatial weighting and calibrated uncertainty.
@@ -89,9 +86,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 'calc(28 * var(--u))',
-          padding: 'calc(10 * var(--u)) calc(22 * var(--u))',
-          borderRadius: 'calc(16 * var(--u))',
+          gap: 'calc(20 * var(--u))',
+          padding: 'calc(8 * var(--u)) calc(18 * var(--u))',
+          borderRadius: 'calc(14 * var(--u))',
+          alignSelf: 'flex-start',
+          flexWrap: 'wrap',
         }}
       >
         <div>
