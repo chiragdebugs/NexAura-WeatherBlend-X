@@ -10,14 +10,14 @@ export const CardUncertainty: React.FC<CardUncertaintyProps> = ({ location }) =>
   const { lower, upper, confidence, disagreementLevel } = location.uncertainty;
   const central = location.blendedForecast;
 
-  // Calculate percentage positions for visualization across a representative scale [30, 110]
-  const minVal = 30;
-  const maxVal = 110;
-  const range = maxVal - minVal;
+  // Calculate percentage positions dynamically for visualization
+  const minVal = Math.max(0, Math.floor(Math.min(lower, central) / 10) * 10 - 10);
+  const maxVal = Math.max(minVal + 40, Math.ceil(Math.max(upper, central) / 10) * 10 + 10);
+  const range = Math.max(1, maxVal - minVal);
   const leftPct = Math.max(0, Math.min(100, ((lower - minVal) / range) * 100));
   const rightPct = Math.max(0, Math.min(100, ((upper - minVal) / range) * 100));
   const centerPct = Math.max(0, Math.min(100, ((central - minVal) / range) * 100));
-  const bandWidth = rightPct - leftPct;
+  const bandWidth = Math.max(2, rightPct - leftPct);
 
   return (
     <div

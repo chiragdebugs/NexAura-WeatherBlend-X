@@ -127,6 +127,19 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Right Tools Group */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'calc(10 * var(--u))', position: 'relative' }}>
+        {(showLocationMenu || showNotifications) && (
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 90,
+            }}
+            onClick={() => {
+              setShowLocationMenu(false);
+              setShowNotifications(false);
+            }}
+          />
+        )}
         {/* Add / Switch Location Pill */}
         <div style={{ position: 'relative' }}>
           <button

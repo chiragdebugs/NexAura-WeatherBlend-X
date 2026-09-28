@@ -12,8 +12,8 @@ export const ModelDisagreementPanel: React.FC<ModelDisagreementPanelProps> = ({
   blendedForecast,
   disagreementLevel,
 }) => {
-  // Max scale mm for the divergence bars
-  const maxRain = 100;
+  // Max scale mm for the divergence bars (dynamic to avoid clipping during extreme events)
+  const maxRain = Math.max(100, blendedForecast, ...models.map((m) => m.forecast));
 
   return (
     <div

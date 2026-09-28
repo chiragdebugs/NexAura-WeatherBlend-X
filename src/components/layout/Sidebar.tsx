@@ -131,18 +131,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelectTab }) => {
       {/* Bottom Signout */}
       <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <button
-          onClick={() => alert('Operational Session Active: Verified NCMRWF/IMD Telemetry stream')}
+          onClick={() => onSelectTab('settings')}
           style={{
             width: 'calc(44 * var(--u))',
             height: 'calc(30 * var(--u))',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'rgba(255, 255, 255, 0.45)',
+            color: activeTab === 'settings' ? 'var(--accent-ice)' : 'rgba(255, 255, 255, 0.45)',
             transition: 'color 0.25s, opacity 0.25s',
           }}
-          aria-label="Operational Session Status"
-          title="Session Status"
+          aria-label="Workstation Settings and Telemetry"
+          title="Workstation Telemetry & Settings"
           onMouseEnter={(e) => {
             e.currentTarget.style.opacity = '0.9';
             e.currentTarget.style.color = '#ffffff';

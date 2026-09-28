@@ -90,7 +90,11 @@ export const CardMainForecast: React.FC<CardMainForecastProps> = ({ location }) 
               color: 'rgba(255, 255, 255, 0.95)',
             }}
           >
-            High rainfall probability
+            {location.rainfall.probabilityHeavyRain >= 0.7
+              ? 'High rainfall probability'
+              : location.rainfall.probabilityHeavyRain >= 0.4
+              ? 'Moderate rainfall probability'
+              : 'Low rainfall probability'}
           </div>
           <div
             style={{

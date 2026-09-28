@@ -167,7 +167,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ location }) => {
               marginTop: 'calc(2 * var(--u))',
             }}
           >
-            {Math.round(location.uncertainty.confidence * 105)}%
+            {Math.round(location.uncertainty.confidence * 100)}%
           </div>
         </div>
 

@@ -15,6 +15,12 @@ export const TrustDetailModal: React.FC<TrustDetailModalProps> = ({
 }) => {
   if (!isOpen) return null;
 
+  const sortedModels = [...location.models].sort((a, b) => b.weight - a.weight);
+  const topModelsText = sortedModels
+    .slice(0, 2)
+    .map((m) => `${m.name} (${Math.round(m.weight * 100)}%)`)
+    .join(' & ');
+
   return (
     <div
       style={{
@@ -54,7 +60,7 @@ export const TrustDetailModal: React.FC<TrustDetailModalProps> = ({
               </h2>
             </div>
             <p style={{ fontSize: 'calc(12 * var(--u))', color: 'rgba(255, 255, 255, 0.65)', marginTop: 'calc(2 * var(--u))' }}>
-              Why WeatherBlend-X dynamically trusted WRF (36%) & NCUM (42%) for {location.name}
+              Why WeatherBlend-X dynamically trusted {topModelsText} for {location.name}
             </p>
           </div>
           <button
@@ -139,7 +145,7 @@ export const TrustDetailModal: React.FC<TrustDetailModalProps> = ({
             lineHeight: 1.45,
           }}
         >
-          <strong>Summary for Forecaster:</strong> High confidence in 67 mm blended value (+06h). Equal-weight averaging would have excessively depressed rainfall to 61 mm due to coarse GFS bias. Dynamic weighting successfully protected the forecast against synoptic underprediction.
+          <strong>Summary for Forecaster:</strong> High confidence in {location.blendedForecast} mm blended value ({location.leadTime}). Equal-weight averaging would have skewed rainfall due to synoptic bias. Dynamic weighting successfully protected the forecast for the prevailing {location.atmosphericRegime} regime.
         </div>
       </div>
     </div>

@@ -26,7 +26,8 @@ export const ForecastTrajectory: React.FC<ForecastTrajectoryProps> = ({
   const minRain = 0;
 
   const points = trajectory.map((pt, i) => {
-    const x = paddingX + (i / (trajectory.length - 1)) * (width - 2 * paddingX);
+    const denom = Math.max(1, trajectory.length - 1);
+    const x = paddingX + (i / denom) * (width - 2 * paddingX);
     const y = height - paddingY - ((pt.rainfall - minRain) / (maxRain - minRain)) * (height - 2 * paddingY);
     const yBaseline = height - paddingY - ((pt.baselineRainfall - minRain) / (maxRain - minRain)) * (height - 2 * paddingY);
     const yUpper = height - paddingY - ((pt.upperBound - minRain) / (maxRain - minRain)) * (height - 2 * paddingY);
